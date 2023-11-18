@@ -10,6 +10,15 @@ const NoteSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    NoteId: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    color: {
+      type: String,
+      // required: true,
+    },
   },
   { timestamps: true }
 );
