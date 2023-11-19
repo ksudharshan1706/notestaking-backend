@@ -34,11 +34,11 @@ exports.getNotes = async (req, res, next) => {
 
 exports.deleteNote = async (req, res, next) => {
   // console.log("req.params", typeof req.params.id);
-  const id = req.params.id;
+  const _id = req.params.id;
   // console.log("req.params", id);
   try {
-    console.log(id);
-    const notesdata = await Note.findOneAndDelete({ NoteId: id });
+    console.log(_id);
+    const notesdata = await Note.findByIdAndDelete({ _id });
     res.status(200);
   } catch (err) {
     next(err);
@@ -47,11 +47,11 @@ exports.deleteNote = async (req, res, next) => {
 
 exports.updateNote = async (req, res, next) => {
   const { id, desc, NoteId } = req.body;
-  // const _id = id;
+  const _id = id;
   // console.log("updatenote ",req.params);
   try {
-    const notesdata = await Note.findOneAndUpdate({ NoteId }, { desc });
-    // const notesdata = await Note.findByIdAndUpdate({ _id }, { desc });
+    // const notesdata = await Note.findOneAndUpdate({ NoteId }, { desc });
+    const notesdata = await Note.findByIdAndUpdate({ _id }, { desc });
     // console.log(notesdata);
   } catch (err) {
     next(err);
